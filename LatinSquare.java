@@ -57,6 +57,15 @@ public class LatinSquare
 	 */
 	public int findInRow(int i, int val)
 	{
+		
+		M.getNRows();
+		
+		for(int j = 0; j<M.getNRows(); j++)
+		{
+			M.getMatrixValue(i, j);
+			if(M.getMatrixValue(i, j) == val)
+				return j;
+		}
 		return -1;
 	}
 	
@@ -66,6 +75,13 @@ public class LatinSquare
 	 */
 	public int findInColumn(int j, int val)
 	{
+		M.getNColumns();
+		for(int i = 0; i<M.getNColumns(); i++)
+		{
+			M.getMatrixValue(i,  j);
+			if(M.getMatrixValue(i, j) == val)
+				return i;
+		}
 		return -1;
 	}
 	
@@ -74,7 +90,11 @@ public class LatinSquare
 	 */
 	public boolean isRowLatin(int row)
 	{
-		return false;
+	      for (int i=1; i<=M.getNColumns(); i++)        
+	      {
+	         if(findInRow(row, i) == -1) return false;
+	      }
+		return true;
 	}
 	
 	/*
@@ -82,7 +102,19 @@ public class LatinSquare
 	 */
 	public boolean isColumnLatin(int col)
 	{
-		return false;
+		for(int j=1; j<=M.getNRows(); j++)
+		{
+			if(findInColumn(col, j) == -1) return false;
+		}
+		return true;
+	}
+	public int getNColums()
+	{
+		return M.getNColumns();
+	}
+	public int getNRows()
+	{
+		return M.getNRows();
 	}
 	
 	/*
@@ -90,6 +122,15 @@ public class LatinSquare
 	 */
 	public boolean isLatin()
 	{
-		return false;
+		int[] Size = M.getSize();
+		for (int i = 0; i<Size[0]; i++)
+		{
+			if (isColumnLatin(i) != true) return false;
+		}
+		for (int j = 0; j<Size[0]; j++)
+		{
+			if (isRowLatin(j) != true) return false;
+		}
+		return true;
 	}
 }

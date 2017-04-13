@@ -16,6 +16,18 @@ public class LatinSquaresApp
 			System.out.print(ms.toString());
 			
 			// Tell the user if is a magic square or not
+			System.out.print("cols: ");
+			for (int i=0; i<ms.getNColums(); i++)
+			{
+				System.out.print(ms.isColumnLatin(i) + " ");
+			}
+			System.out.println("");
+			System.out.print("rows: ");
+			for (int j=0; j<ms.getNRows(); j++)
+			{
+				System.out.print(ms.isRowLatin(j) + " ");
+			}
+			System.out.println("");
 			System.out.println(ms.isLatin());
 			System.out.println("");
 		}
